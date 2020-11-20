@@ -20,7 +20,8 @@ app.use(cors());
 app.use('/api/v1/shelters', apiSheltersRouter);
 app.use('/api/v1/images', imageRouter);
 
-app.get('/', function (req, res) { 
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))});
+app.get('*', function (req, res) { 
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 module.exports = app;
