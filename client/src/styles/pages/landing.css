@@ -1,0 +1,159 @@
+#page-landing {
+    width: 100vw;
+    height:100vh;
+    background-image: url(/src/images/background1.svg);
+    /* background: linear-gradient(329.54deg, #29B6D1 0%, #00C7C7 100%); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+#page-landing .content-wrapper {
+    position: relative;
+
+    width: 100%;
+    max-width: 1100px;
+
+    height: 100%;
+    max-height: 680px;
+
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* background: url(/src/images/animals.svg) right center ; */
+    /* background: url(/src/images/1.png) right center ; */
+    background: url(/src/images/2.png) right center ;
+    background-repeat: no-repeat;
+    background-size: 60%;
+
+}
+
+#page-landing .content-wrapper main {
+    max-width: 350px;
+}
+
+#page-landing .content-wrapper main h1 {
+    font-size: 76px;
+    font-weight: 900;
+    line-height: 70px;
+}
+
+#page-landing .content-wrapper main p {
+    margin-top: 40px;
+    font-size: 24px;
+    line-height: 34px;
+}
+
+.content-wrapper .location {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    font-size: 24px;
+    line-height: 34px;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: right;
+}
+
+.content-wrapper .location strong {
+    font-weight: 800;;
+}
+
+.content-wrapper .enter-app {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    width: 80px;
+    height: 80px;
+    background: #ffd666;
+    border-radius: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color 0.2s;
+
+}
+
+.content-wrapper .enter-app:hover {
+    background: #96feff;
+}
+
+/* MEDIA QUERY */
+
+  /* iphone  */
+   @media(max-width: 750px ) {
+  
+    #page-landing .content-wrapper {
+      background: none;
+      align-items: center;
+      text-align: center;
+      padding: 5px;
+   }
+  
+   #page-landing .content-wrapper main h1 {
+    margin-top: 60px;
+    font-size: 65px;
+  
+    }
+  
+   #page-landing .content-wrapper main p {
+    display: none;
+    }
+  
+    .content-wrapper .location {
+      position: relative;
+      text-align: center;
+      margin-top: 60px;
+    }
+  
+    .content-wrapper .enter-app {
+      position: relative;
+      
+    }
+  
+  }
+  
+  /* Media Query For Tablet */
+  @media screen and (max-width:800px) { 
+    #page-landing .content-wrapper {
+        background: none;
+        align-items: center;
+        text-align: center;
+        padding: 5px;
+     }
+     
+     #page-landing .content-wrapper main h1 {
+        margin-top: 60px;
+        font-size: 75px;
+      
+        }
+      
+       #page-landing .content-wrapper main p {
+        display: none;
+        }
+      
+        .content-wrapper .location {
+          position: relative;
+          text-align: center;
+          margin-top: 80px;
+          padding: 10px;
+        }
+      
+        .content-wrapper .enter-app {
+          position: relative;
+          
+        }
+
+}
