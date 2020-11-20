@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const models = require('../models')
-const multer  = require('multer')
+const multer  = require('multer');
+const uploadToS3 = require('../upload-to-s3');
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -47,26 +48,36 @@ router.post('/', upload.array('path', 8), (req, res) => {
     })
     return;
   }
-  models.Shelter.create({
-    name: req.body.name,
-    latitude: req.body.latitude,
-    longitude: req.body.longitude,
-    about: req.body.about,
-    instructions: req.body.instructions,
-    open_hours: req.body.open_hours,
-    open_on_weekends: req.body.open_on_weekends,
-    Images: req.files.map(file => {
-      return {
-        path: file.path
-      }
+
+  Promise.all(req.files.map(file => {
+
+    return uploadToS3(file.path)
+  }))
+  .then(files => {
+    console.log(files)
+    models.Shelter.create({
+    
+      name: req.body.name,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+      about: req.body.about,
+      instructions: req.body.instructions,
+      open_hours: req.body.open_hours,
+      open_on_weekends: req.body.open_on_weekends,
+      Images: files.map(file => {
+        return {
+          path: file.Location
+        }
+      })
+    }, {
+      include: [models.Image]
+    }
+    )
+    .then(data => {
+      res.status(201).json(data)
     })
-  }, {
-    include: [models.Image]
-  }
-  )
-  .then(data => {
-    res.status(201).json(data)
-  })
+
+    })
 })
 
 module.exports = router;

@@ -42,14 +42,14 @@ export default function Shelter() {
 
             <main>
                 <div className="shelter-details">
-                    <img src={"/" + shelter.Images[activeImageIndex].path} alt={shelter.name} />
+                    <img src={shelter.Images[activeImageIndex].path} alt={shelter.name} />
 
                     <div className="images">
                     {/* <button className="active" type="button"> */}
                         {shelter.Images.map((image, index) => {
                             return (
                                 <button key={image.id} className={activeImageIndex === index ? 'active' : ''} type="button" onClick={() => setActiveImageIndex(index)}>
-                            <img src={"/" + image.path}alt="#" />
+                            <img src={image.path}alt="#" />
                         </button>   
                             )
                         })}
