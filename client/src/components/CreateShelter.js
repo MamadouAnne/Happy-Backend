@@ -65,7 +65,7 @@ export default function CreateShelter() {
 
     // Submiting the form
     const handleSubmit = (e) => {
-
+        e.preventDefault()
         const formData  = new FormData();
         formData.append('name', [name]);
         formData.append('about', [about])
